@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  construction-platform:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: multimodal-construction-platform:latest
+    container_name: construction_ai_app
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-}
+    restart: unless-stopped
